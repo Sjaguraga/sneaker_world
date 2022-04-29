@@ -1,0 +1,2 @@
+class OrderTablesController < ApplicationController
+end
