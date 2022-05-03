@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :order_tables
   resources :orders
-  resources :sneakers
+  resources :sneakers, only: [:index]
   post "/signup", to: "users#create"
   get "/me", to: "users#show"
   post "/login", to: "sessions#create"

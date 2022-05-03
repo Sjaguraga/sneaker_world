@@ -113,11 +113,7 @@ function LoginForm({ onLogin, showLogin, setShowLogin }) {
               Sign In
             </Button>
             <Grid container>
-              {/* <Grid item xs>
-                <Link href="#" variant="body2">
-                  Forgot password?
-                </Link>
-              </Grid> */}
+              <Grid item xs></Grid>
               <Grid item>
                 <Link
                   href="#"

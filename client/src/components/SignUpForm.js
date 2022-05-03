@@ -50,10 +50,11 @@ function SignUpForm({ onLogin, showLogin, setShowLogin }) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        username,
-        password,
+        username: username,
+        password: password,
         password_confirmation: passwordConfirmation,
         email: email,
+        name: name,
       }),
     }).then((r) => {
       if (r.ok) {

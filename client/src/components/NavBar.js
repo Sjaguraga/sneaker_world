@@ -6,7 +6,7 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import IconButton from "@mui/material/IconButton";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
-import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
+import ShoppingCartSharpIcon from "@mui/icons-material/ShoppingCartSharp";
 import ShoppingBagIcon from "@mui/icons-material/ShoppingBag";
 import LogoutOutlinedIcon from "@mui/icons-material/LogoutOutlined";
 
@@ -20,7 +20,7 @@ function NavBar({ setUser }) {
   }
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
+      <AppBar position="static" sx={{ bgcolor: "rgb(26, 26, 26)" }}>
         <Toolbar>
           <IconButton
             size="large"
@@ -42,13 +42,13 @@ function NavBar({ setUser }) {
               aria-label="menu"
               sx={{ mr: 2 }}
               as={Link}
-              to="/market"
+              to="/sneakers"
             >
               <ShoppingBagIcon />
             </IconButton>
           </Typography>
           <IconButton color="inherit">
-            <ShoppingCartOutlinedIcon />
+            <ShoppingCartSharpIcon />
           </IconButton>
           <IconButton color="inherit" onClick={handleLogoutClick}>
             <LogoutOutlinedIcon />

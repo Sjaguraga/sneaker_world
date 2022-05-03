@@ -7,12 +7,12 @@ import NavBar from "./NavBar";
 import Error from "../pages/Error";
 import "./App.css";
 import Home from "../pages/Home";
+import Sneakers from "../pages/Sneakers";
 
 function App() {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    // auto-login
     fetch("/me").then((r) => {
       if (r.ok) {
         r.json().then((user) => setUser(user));
@@ -27,7 +27,8 @@ function App() {
       <NavBar user={user} setUser={setUser} />
       <main>
         <Routes>
-          <Route path="/" element={<Home />}></Route>
+          <Route path="/sneakers" element={<Sneakers user={user} />} />
+          <Route path="/" element={<Home user={user} />} />
           <Route path="*" element={<Error />} />
         </Routes>
       </main>
