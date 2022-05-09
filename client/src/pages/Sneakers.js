@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Button from "@mui/material/Button";
 import Card from "@mui/material/Card";
@@ -7,10 +8,9 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import CssBaseline from "@mui/material/CssBaseline";
 import Grid from "@mui/material/Grid";
-import Stack from "@mui/material/Stack";
-import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
+import Box from "@mui/material/Box";
 import Link from "@mui/material/Link";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import "./Sneakers.css";
@@ -28,13 +28,11 @@ function Copyright() {
   );
 }
 
-const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-
 const theme = createTheme();
 
 function Sneakers({ user }) {
   const [sneakersList, setSneakersList] = useState([]);
-
+  const navigate = useNavigate();
   useEffect(() => {
     fetch("/sneakers")
       .then((r) => r.json())
@@ -43,82 +41,106 @@ function Sneakers({ user }) {
         setSneakersList(sneakers);
       });
   }, []);
+
+  const clickCardHandler = (sneakerId) => {
+    console.log(sneakerId);
+    navigate(`/sneakers/${sneakerId}`);
+  };
+
+  const addToCartHandler = (e) => {
+    e.preventDefault();
+  };
+
   return (
     <div className="sneaker-container">
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <main>
-          <h1
-            className="sneaker-title"
-            style={{
-              color: "#800020",
-              fontFamily: "Slackey",
-              textShadow: "2px 2px brown",
-            }}
-          >
-            W E L C O M E, {user.username}!
-          </h1>
-          <Box
-            sx={{
-              bgcolor: "background.paper",
-              pt: 8,
-              pb: 6,
-            }}
-          >
-            <Container maxWidth="sm">
-              <Typography
-                component="h1"
-                variant="h2"
-                align="center"
-                color="text.primary"
-                gutterBottom
-              ></Typography>
-              <Stack
-                sx={{ pt: 4 }}
-                direction="row"
-                spacing={2}
-                justifyContent="center"
-              ></Stack>
-            </Container>
-          </Box>
-          <Container sx={{ py: 8 }} maxWidth="md">
-            {/* End hero unit */}
-            <Grid container spacing={2}>
-              {sneakersList.map((sneaker) => (
-                <Grid item key={sneaker.id} xs={12} sm={6} md={4}>
-                  <Card
-                    className="fancy_card"
-                    sx={{
-                      height: "100%",
-                      display: "flex",
-                      flexDirection: "column",
-                    }}
-                  >
-                    ${sneaker.price}
-                    <CardMedia
-                      component="img"
+          <div className="glass">
+            <h1
+              className="sneaker-title"
+              style={{
+                color: "white",
+                fontFamily: "Life Is Okay",
+                textShadow: "2px 2px rgb(80,80,80)",
+                marginTop: "-10px",
+                marginBottom: "-40px",
+              }}
+            >
+              W E L C O M E, {user.username}!
+            </h1>
+            <Container sx={{ py: 8 }} maxWidth="md">
+              {/* End hero unit */}
+              <Grid container spacing={2}>
+                {sneakersList.map((sneaker) => (
+                  <Grid item key={sneaker.id} xs={12} sm={6} md={4}>
+                    <Card
+                      className="fancy_card"
                       sx={{
-                        // 16:9
-                        pt: "56.25%",
+                        height: "100%",
+                        display: "flex",
+                        flexDirection: "column",
                       }}
-                      image={sneaker.image}
-                      alt={sneaker.title}
-                    />
-                    <CardContent sx={{ flexGrow: 1 }}>
-                      <Typography gutterBottom variant="h5" component="h2">
-                        {sneaker.name}
-                      </Typography>
-                      <Typography>{sneaker.description}</Typography>
-                    </CardContent>
-                    <CardActions>
-                      <Button size="small">Add to Cart</Button>
-                      <Button size="small"> Detail</Button>
-                    </CardActions>
-                  </Card>
-                </Grid>
-              ))}
-            </Grid>
-          </Container>
+                    >
+                      <Grid container>
+                        <Grid xs={6} item>
+                          <Typography>
+                            <div className="sneaker-price">{sneaker.brand}</div>
+                          </Typography>
+                        </Grid>
+                        <Grid xs={6} item container>
+                          <Typography>
+                            <div className="sneaker-price">
+                              ${sneaker.price}
+                            </div>
+                          </Typography>
+                        </Grid>
+                      </Grid>
+                      <CardMedia
+                        component="img"
+                        image={sneaker.image}
+                        alt={sneaker.title}
+                      />
+                      <CardContent sx={{ flexGrow: 1 }}>
+                        <Typography
+                          gutterBottom
+                          variant="h5"
+                          component="h2"
+                          align="center"
+                        >
+                          <div className="name-font">{sneaker.name}</div>
+                        </Typography>
+                        <Typography>
+                          {/* <div className="description-font">
+                            {sneaker.description}
+                          </div> */}
+                        </Typography>
+                      </CardContent>
+                      <CardActions>
+                        <Button
+                          size="small"
+                          onClick={() => {
+                            console.log("hi");
+                          }}
+                        >
+                          Add to Cart
+                        </Button>
+                        <Button
+                          size="small"
+                          onClick={() => {
+                            clickCardHandler(sneaker.id);
+                          }}
+                        >
+                          {" "}
+                          Detail
+                        </Button>
+                      </CardActions>
+                    </Card>
+                  </Grid>
+                ))}
+              </Grid>
+            </Container>
+          </div>
         </main>
         {/* Footer */}
         <Box sx={{ bgcolor: "background.paper", p: 6 }} component="footer">

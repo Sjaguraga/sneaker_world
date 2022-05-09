@@ -5,10 +5,8 @@ import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import IconButton from "@mui/material/IconButton";
-import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
-import ShoppingCartSharpIcon from "@mui/icons-material/ShoppingCartSharp";
-import ShoppingBagIcon from "@mui/icons-material/ShoppingBag";
-import LogoutOutlinedIcon from "@mui/icons-material/LogoutOutlined";
+import PersonSharpIcon from "@mui/icons-material/PersonSharp";
+import "./NavBar.css";
 
 function NavBar({ setUser }) {
   function handleLogoutClick() {
@@ -20,10 +18,10 @@ function NavBar({ setUser }) {
   }
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" sx={{ bgcolor: "rgb(26, 26, 26)" }}>
+      <AppBar position="static" sx={{ bgcolor: "#1b1b1b" }}>
         <Toolbar>
           <IconButton
-            size="large"
+            size="small"
             edge="start"
             color="inherit"
             aria-label="menu"
@@ -31,12 +29,12 @@ function NavBar({ setUser }) {
             as={Link}
             to="/"
           >
-            <HomeOutlinedIcon />
+            <div className="nav-titles">H O M E</div>
           </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             <IconButton
               className="blink-1"
-              size="large"
+              size="small"
               edge="start"
               color="inherit"
               aria-label="menu"
@@ -44,14 +42,25 @@ function NavBar({ setUser }) {
               as={Link}
               to="/sneakers"
             >
-              <ShoppingBagIcon />
+              <div className="nav-titles">S N E A K E R S</div>
             </IconButton>
           </Typography>
-          <IconButton color="inherit">
-            <ShoppingCartSharpIcon />
-          </IconButton>
+          <Typography>
+            <IconButton
+              className="blink-1"
+              size="small"
+              edge="start"
+              color="inherit"
+              aria-label="menu"
+              sx={{ mr: 2 }}
+              as={Link}
+              to="/checkout"
+            >
+              <div className="nav-titles">C H E C K O U T</div>
+            </IconButton>
+          </Typography>
           <IconButton color="inherit" onClick={handleLogoutClick}>
-            <LogoutOutlinedIcon />
+            <PersonSharpIcon />
           </IconButton>
         </Toolbar>
       </AppBar>

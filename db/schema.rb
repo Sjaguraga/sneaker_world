@@ -10,26 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_29_191648) do
+ActiveRecord::Schema.define(version: 2022_05_09_175232) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "order_tables", force: :cascade do |t|
-    t.bigint "sneaker_id", null: false
-    t.bigint "order_id", null: false
+  create_table "carts", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "sneaker_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["order_id"], name: "index_order_tables_on_order_id"
-    t.index ["sneaker_id"], name: "index_order_tables_on_sneaker_id"
-  end
-
-  create_table "orders", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.integer "total"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_orders_on_user_id"
+    t.index ["sneaker_id"], name: "index_carts_on_sneaker_id"
+    t.index ["user_id"], name: "index_carts_on_user_id"
   end
 
   create_table "sneakers", force: :cascade do |t|
@@ -51,7 +43,4 @@ ActiveRecord::Schema.define(version: 2022_04_29_191648) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "order_tables", "orders"
-  add_foreign_key "order_tables", "sneakers"
-  add_foreign_key "orders", "users"
 end

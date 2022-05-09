@@ -8,7 +8,8 @@ import Error from "../pages/Error";
 import "./App.css";
 import Home from "../pages/Home";
 import Sneakers from "../pages/Sneakers";
-
+import Checkout from "./checkout/Checkout";
+import SneakerDetails from "../pages/SneakerDetails";
 function App() {
   const [user, setUser] = useState(null);
 
@@ -29,6 +30,8 @@ function App() {
         <Routes>
           <Route path="/sneakers" element={<Sneakers user={user} />} />
           <Route path="/" element={<Home user={user} />} />
+          <Route path="/sneakers/:sneaker_id" element={<SneakerDetails />} />
+          <Route path="/checkout" element={<Checkout />} />
           <Route path="*" element={<Error />} />
         </Routes>
       </main>

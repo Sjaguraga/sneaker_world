@@ -5,10 +5,10 @@ import SignUpForm from "../components/SignUpForm";
 function Login({ onLogin }) {
   const [showLogin, setShowLogin] = useState(true);
   return (
-    <div>
+    <div className="login">
       <div className="split left">
         <div className="centered">
-          <h1 className="login-title">S N E A K E R C I T Y</h1>
+          {/* <h1 className="login-title">S N E A K E R W O R L D</h1> */}
           {showLogin ? (
             <>
               <LoginForm

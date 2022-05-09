@@ -1,5 +1,5 @@
-.home-container {
-  background-color: black;
+.login {
+  background-color: rgb(255, 255, 255);
   background-image: url("https://www.transparenttextures.com/patterns/stardust.png");
   animation: stars 30s linear infinite;
 }

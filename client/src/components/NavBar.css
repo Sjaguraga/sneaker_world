@@ -1,0 +1,23 @@
+.nav-titles {
+  font-size: 12px;
+  font-size: 12px;
+  padding-left: 100px;
+  width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+  right: -90px;
+  flex-wrap: wrap;
+  bottom: 10px;
+  align-items: flex-end;
+  padding: 0px;
+  line-height: 0px;
+  padding-left: 200px;
+  padding-right: 50px;
+  color: rgb(220, 220, 220);
+}
+
+a,
+u {
+  text-decoration: none;
+}
