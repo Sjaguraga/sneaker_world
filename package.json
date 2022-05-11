@@ -18,7 +18,7 @@
     "react-bootstrap-validation": "^0.1.11",
     "react-icons": "^4.3.1",
     "styled-components": "^5.3.5",
-    "three": "^0.140.0",
+    "three": "^0.140.2",
     "twitter-component": "^1.0.2"
   },
   "devDependencies": {

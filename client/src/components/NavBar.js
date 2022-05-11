@@ -5,10 +5,12 @@ import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import IconButton from "@mui/material/IconButton";
+import Badge from "@mui/material/Badge";
+import ShoppingBagSharpIcon from "@mui/icons-material/ShoppingBagSharp";
 import PersonSharpIcon from "@mui/icons-material/PersonSharp";
 import "./NavBar.css";
 
-function NavBar({ setUser }) {
+function NavBar({ setUser, cartLength }) {
   function handleLogoutClick() {
     fetch("/logout", { method: "DELETE" }).then((r) => {
       if (r.ok) {
@@ -29,7 +31,18 @@ function NavBar({ setUser }) {
             as={Link}
             to="/"
           >
-            <div className="nav-titles">H O M E</div>
+            S N E A K E R W O R L D
+          </IconButton>
+          <IconButton
+            size="small"
+            edge="start"
+            color="inherit"
+            aria-label="menu"
+            sx={{ mr: 2 }}
+            as={Link}
+            to="/"
+          >
+            H O M E
           </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             <IconButton
@@ -42,7 +55,7 @@ function NavBar({ setUser }) {
               as={Link}
               to="/sneakers"
             >
-              <div className="nav-titles">S N E A K E R S</div>
+              S N E A K E R S
             </IconButton>
           </Typography>
           <Typography>
@@ -56,7 +69,9 @@ function NavBar({ setUser }) {
               as={Link}
               to="/checkout"
             >
-              <div className="nav-titles">C H E C K O U T</div>
+              <Badge color="primary" badgeContent={cartLength}>
+                <ShoppingBagSharpIcon />
+              </Badge>
             </IconButton>
           </Typography>
           <IconButton color="inherit" onClick={handleLogoutClick}>

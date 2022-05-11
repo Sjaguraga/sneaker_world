@@ -4,6 +4,10 @@ import "./Home.css";
 import Link from "@mui/material/Link";
 import Typography from "@mui/material/Typography";
 
+// import { Canvas } from "@react-three/fiber";
+// import { OrbitControls } from "@react-three/drei";
+// import BoxThree from "../pages/BoxThree";
+
 import Box from "@mui/material/Box";
 
 function Copyright() {
@@ -23,6 +27,12 @@ function Home() {
   return (
     <div className="home-container">
       <News />
+      {/* <Canvas className="canvas">
+        <BoxThree />
+        <ambientLight intensity={1} />
+        <directionalLight position={[-2, 5, 2]} intensity={1} />
+        <OrbitControls enableZoom={false} autoRotate={true} />
+      </Canvas> */}
       {/* Footer */}
       <Box sx={{ bgcolor: "background.paper", p: 6 }} component="footer">
         <Typography variant="h6" align="center" gutterBottom>

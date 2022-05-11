@@ -1,4 +1,4 @@
-.nav-titles {
+/* .nav-titles {
   font-size: 12px;
   font-size: 12px;
   padding-left: 100px;
@@ -15,9 +15,13 @@
   padding-left: 200px;
   padding-right: 50px;
   color: rgb(220, 220, 220);
-}
+} */
 
 a,
 u {
   text-decoration: none;
+}
+
+a {
+  color: red;
 }

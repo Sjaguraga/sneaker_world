@@ -30,7 +30,7 @@ function Copyright() {
 
 const theme = createTheme();
 
-function Sneakers({ user }) {
+function Sneakers({ user, handleAddCart }) {
   const [sneakersList, setSneakersList] = useState([]);
   const navigate = useNavigate();
   useEffect(() => {
@@ -120,6 +120,7 @@ function Sneakers({ user }) {
                         <Button
                           size="small"
                           onClick={() => {
+                            handleAddCart(sneaker.id);
                             console.log("hi");
                           }}
                         >
