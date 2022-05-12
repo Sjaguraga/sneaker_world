@@ -7,8 +7,8 @@ function News() {
     anchor.setAttribute("data-theme", "dark");
     anchor.setAttribute("data-tweet-limit", "unlimitted");
     anchor.setAttribute("data-chrome", "noheader nofooter noborders");
-    anchor.setAttribute("data-height", "700");
-    anchor.setAttribute("data-width", "400");
+    anchor.setAttribute("data-height", "7000");
+    anchor.setAttribute("data-width", "4000");
     anchor.setAttribute("href", "https://twitter.com/SneakerNews");
     document.getElementsByClassName("twitter-embed")[0].appendChild(anchor);
 

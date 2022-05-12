@@ -8,7 +8,6 @@ import IconButton from "@mui/material/IconButton";
 import Badge from "@mui/material/Badge";
 import ShoppingBagSharpIcon from "@mui/icons-material/ShoppingBagSharp";
 import PersonSharpIcon from "@mui/icons-material/PersonSharp";
-import Cart from "../CartComponents/Cart";
 import "./NavBar.css";
 
 function NavBar({ setUser, cartLength }) {
@@ -29,22 +28,24 @@ function NavBar({ setUser, cartLength }) {
             edge="start"
             color="inherit"
             aria-label="menu"
-            sx={{ mr: 2 }}
+            sx={{ mr: 60 }}
             as={Link}
             to="/"
           >
-            S N E A K E R W O R L D
+            <Typography sx={{ fontSize: 25, fontFamily: "Astro World" }}>
+              S N E A K E R W O R L D
+            </Typography>
           </IconButton>
           <IconButton
             size="small"
             edge="start"
             color="inherit"
             aria-label="menu"
-            sx={{ mr: 2 }}
+            sx={{ ml: -10 }}
             as={Link}
             to="/"
           >
-            H O M E
+            <Typography sx={{ fontSize: 12 }}>H O M E</Typography>
           </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             <IconButton
@@ -57,7 +58,7 @@ function NavBar({ setUser, cartLength }) {
               as={Link}
               to="/sneakers"
             >
-              S N E A K E R S
+              <Typography sx={{ fontSize: 12 }}>S N E A K E R S</Typography>
             </IconButton>
           </Typography>
           <Typography>

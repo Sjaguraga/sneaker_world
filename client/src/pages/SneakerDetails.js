@@ -12,7 +12,7 @@ import Box from "@mui/material/Box";
 
 function Copyright() {
   return (
-    <Typography variant="body2" color="text.secondary" align="center">
+    <Typography variant="body2" color="background.paper" align="center">
       {"Copyright © "}
       <Link color="inherit" href="https://mui.com/">
         S N E A K E R W O R L D
@@ -54,12 +54,12 @@ function SneakerDetails() {
                 >
                   <Grid container>
                     <Grid xs={6} item>
-                      <Typography>
+                      <Typography sx={{ mr: 40 }}>
                         <div className="sneaker-price">{sneaker.brand}</div>
                       </Typography>
                     </Grid>
                     <Grid xs={6} item container>
-                      <Typography>
+                      <Typography sx={{ ml: 46 }}>
                         <div className="sneaker-price">${sneaker.price}</div>
                       </Typography>
                     </Grid>
@@ -91,18 +91,14 @@ function SneakerDetails() {
         </div>
       </main>
       {/* Footer */}
-      <Box sx={{ bgcolor: "background.paper", p: 6 }} component="footer">
-        <Typography variant="h6" align="center" gutterBottom>
-          Footer
-        </Typography>
+      <Box sx={{ bgcolor: "#1b1b1b", p: 2 }} component="footer">
+        <Typography variant="h6" align="center" gutterBottom></Typography>
         <Typography
           variant="subtitle1"
           align="center"
           color="text.secondary"
           component="p"
-        >
-          Something here to give the footer a purpose!
-        </Typography>
+        ></Typography>
         <Copyright />
       </Box>
       {/* End footer */}

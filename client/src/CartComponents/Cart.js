@@ -6,7 +6,6 @@ import Container from "@mui/material/Container";
 import Paper from "@mui/material/Paper";
 import ListItem from "@mui/material/ListItem";
 import ListItemAvatar from "@mui/material/ListItemAvatar";
-import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
@@ -24,15 +23,6 @@ export default function Cart({
 }) {
   const [cartTotal, setCartTotal] = React.useState(0);
   const navigate = useNavigate();
-  // React.useEffect(() => {
-  //   fetch(`/shoppingcarts/${user.id}`)
-  //     .then((resp) => resp.json())
-  //     .then((data) => {
-  //       console.log(user.id);
-  //       console.log(data);
-  //       setCart(data);
-  //     });
-  // }, []);
 
   let cartList = cart.map((item) => {
     return (
@@ -71,7 +61,7 @@ export default function Cart({
       <div className="glass-checkout">
         <ThemeProvider theme={theme}>
           <Container component="main" maxWidth="sm" sx={{ mb: 4 }}>
-            <Typography>Sneaker Carts</Typography>
+            <Typography>C A R T </Typography>
             <Paper
               variant="outlined"
               sx={{ my: { xs: 3, md: 3 }, p: { xs: 2, md: 3 } }}

@@ -17,7 +17,7 @@ import "./Sneakers.css";
 
 function Copyright() {
   return (
-    <Typography variant="body2" color="text.secondary" align="center">
+    <Typography variant="body2" color="background.paper" align="center">
       {"Copyright © "}
       <Link color="inherit" href="https://mui.com/">
         S N E A K E R W O R L D
@@ -59,8 +59,6 @@ function Sneakers({ user, handleAddCart }) {
                 color: "white",
                 fontFamily: "Life Is Okay",
                 textShadow: "2px 2px rgb(80,80,80)",
-                marginTop: "-10px",
-                marginBottom: "-40px",
               }}
             >
               W E L C O M E, {user.username}!
@@ -80,12 +78,12 @@ function Sneakers({ user, handleAddCart }) {
                     >
                       <Grid container>
                         <Grid xs={6} item>
-                          <Typography>
+                          <Typography sx={{ mr: 6 }}>
                             <div className="sneaker-price">{sneaker.brand}</div>
                           </Typography>
                         </Grid>
                         <Grid xs={6} item container>
-                          <Typography>
+                          <Typography sx={{ ml: 10 }}>
                             <div className="sneaker-price">
                               ${sneaker.price}
                             </div>
@@ -106,11 +104,6 @@ function Sneakers({ user, handleAddCart }) {
                         >
                           <div className="name-font">{sneaker.name}</div>
                         </Typography>
-                        <Typography>
-                          {/* <div className="description-font">
-                            {sneaker.description}
-                          </div> */}
-                        </Typography>
                       </CardContent>
                       <CardActions>
                         <Button
@@ -119,7 +112,7 @@ function Sneakers({ user, handleAddCart }) {
                             handleAddCart(sneaker.id);
                           }}
                         >
-                          Add to Cart
+                          <Typography sx={{ mr: 8 }}>Add to Cart</Typography>
                         </Button>
                         <Button
                           size="small"
@@ -128,7 +121,7 @@ function Sneakers({ user, handleAddCart }) {
                           }}
                         >
                           {" "}
-                          Detail
+                          <Typography>Detail</Typography>
                         </Button>
                       </CardActions>
                     </Card>
@@ -138,22 +131,16 @@ function Sneakers({ user, handleAddCart }) {
             </Container>
           </div>
         </main>
-        {/* Footer */}
-        <Box sx={{ bgcolor: "background.paper", p: 6 }} component="footer">
-          <Typography variant="h6" align="center" gutterBottom>
-            Footer
-          </Typography>
+        <Box sx={{ bgcolor: "#1b1b1b", p: 2 }} component="footer">
+          <Typography variant="h6" align="center" gutterBottom></Typography>
           <Typography
             variant="subtitle1"
             align="center"
             color="text.secondary"
             component="p"
-          >
-            Something here to give the footer a purpose!
-          </Typography>
+          ></Typography>
           <Copyright />
         </Box>
-        {/* End footer */}
       </ThemeProvider>
     </div>
   );

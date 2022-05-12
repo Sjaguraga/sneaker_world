@@ -74,7 +74,7 @@ function LoginForm({ onLogin, showLogin, setShowLogin, getCart }) {
                 alignItems: "center",
               }}
             >
-              <Avatar sx={{ m: 1, bgcolor: "black" }}>
+              <Avatar sx={{ m: 1, bgcolor: "info.main" }}>
                 <LoginSharpIcon />
               </Avatar>
               <Typography component="h1" variant="h5">
@@ -87,6 +87,7 @@ function LoginForm({ onLogin, showLogin, setShowLogin, getCart }) {
                 sx={{ mt: 1 }}
               >
                 <TextField
+                  sx={{ bgcolor: "white" }}
                   margin="normal"
                   required
                   fullWidth
@@ -97,6 +98,7 @@ function LoginForm({ onLogin, showLogin, setShowLogin, getCart }) {
                   autoFocus
                 />
                 <TextField
+                  sx={{ bgcolor: "white" }}
                   margin="normal"
                   required
                   fullWidth
@@ -134,7 +136,7 @@ function LoginForm({ onLogin, showLogin, setShowLogin, getCart }) {
                 </Grid>
               </Box>
             </Box>
-            <Copyright sx={{ mt: 8, mb: 4 }} />
+            <Copyright sx={{ mt: 8, mb: 25 }} />
           </Container>
         </ThemeProvider>
       </div>

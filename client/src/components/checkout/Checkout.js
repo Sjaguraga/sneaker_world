@@ -164,7 +164,7 @@ export default function Checkout({
                 {activeStep === steps.length ? (
                   <React.Fragment>
                     <Typography variant="h5" gutterBottom>
-                      Thank you for your order.
+                      Thank you {user.username} for shopping with us.
                     </Typography>
                     <Typography variant="subtitle1">
                       Your order number is #2001539. We have emailed your order
