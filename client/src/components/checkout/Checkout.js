@@ -1,4 +1,6 @@
 import * as React from "react";
+
+import { useState } from "react";
 import CssBaseline from "@mui/material/CssBaseline";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -31,23 +33,95 @@ function Copyright() {
 
 const steps = ["Shipping address", "Payment details", "Review your order"];
 
-function getStepContent(step) {
-  switch (step) {
-    case 0:
-      return <AddressForm />;
-    case 1:
-      return <PaymentForm />;
-    case 2:
-      return <Review />;
-    default:
-      throw new Error("Unknown step");
-  }
-}
-
 const theme = createTheme();
 
-export default function Checkout() {
+export default function Checkout({
+  checkoutSum,
+  cart,
+  setCart,
+  user,
+  setCartLength,
+}) {
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [address1, setAddress1] = useState("");
+  const [address2, setAddress2] = useState("");
+  const [city, setCity] = useState("");
+  const [state, setState] = useState("");
+  const [zip, setZip] = useState("");
+  const [country, setCountry] = useState("");
+  const [cardName, setCardName] = useState("");
+  const [cardNumber, setCardNumber] = useState("");
+  const [expiration, setExpiration] = useState("");
+  const [cvv, setCvv] = useState("");
+
+  //clear cart
+  const clearCart = () => {
+    fetch(`/clearCart/${user.id}`, {
+      method: "DELETE",
+    })
+      .then((resp) => resp.json())
+      .then((data) => {
+        console.log("cart cleared");
+        console.log(data);
+        //set cart length back to 0
+        setCartLength(0);
+        setCart([]);
+      });
+  };
+
+  function getStepContent(step) {
+    switch (step) {
+      case 0:
+        return (
+          <AddressForm
+            setFirstName={setFirstName}
+            setLastName={setLastName}
+            setAddress1={setAddress1}
+            setAddress2={setAddress2}
+            setCity={setCity}
+            setState={setState}
+            setZip={setZip}
+            setCountry={setCountry}
+          />
+        );
+      case 1:
+        return (
+          <PaymentForm
+            setCardName={setCardName}
+            setCardNumber={setCardNumber}
+            setExpiration={setExpiration}
+            setCvv={setCvv}
+          />
+        );
+      case 2:
+        return (
+          <Review
+            checkoutSum={checkoutSum}
+            cart={cart}
+            firstName={firstName}
+            lastName={lastName}
+            address1={address1}
+            address2={address2}
+            city={city}
+            state={state}
+            zip={zip}
+            country={country}
+            cardName={cardName}
+            cardNumber={cardNumber}
+            expiration={expiration}
+            cvv={cvv}
+          />
+        );
+      default:
+        throw new Error("Unknown step");
+    }
+  }
+
   const [activeStep, setActiveStep] = React.useState(0);
+  if (activeStep === steps.length) {
+    clearCart();
+  }
 
   const handleNext = () => {
     setActiveStep(activeStep + 1);

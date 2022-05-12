@@ -34,7 +34,7 @@ function Copyright(props) {
 
 const theme = createTheme();
 
-function LoginForm({ onLogin, showLogin, setShowLogin }) {
+function LoginForm({ onLogin, showLogin, setShowLogin, getCart }) {
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -50,7 +50,10 @@ function LoginForm({ onLogin, showLogin, setShowLogin }) {
       body: JSON.stringify({ username, password }),
     }).then((r) => {
       if (r.ok) {
-        r.json().then((user) => onLogin(user));
+        r.json().then((user) => {
+          onLogin(user);
+          getCart();
+        });
       } else {
         r.json().then((err) => console.log(err.errors));
       }

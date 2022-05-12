@@ -47,10 +47,6 @@ function Sneakers({ user, handleAddCart }) {
     navigate(`/sneakers/${sneakerId}`);
   };
 
-  const addToCartHandler = (e) => {
-    e.preventDefault();
-  };
-
   return (
     <div className="sneaker-container">
       <ThemeProvider theme={theme}>
@@ -121,7 +117,6 @@ function Sneakers({ user, handleAddCart }) {
                           size="small"
                           onClick={() => {
                             handleAddCart(sneaker.id);
-                            console.log("hi");
                           }}
                         >
                           Add to Cart

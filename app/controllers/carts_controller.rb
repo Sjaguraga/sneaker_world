@@ -1,7 +1,13 @@
 class CartsController < ApplicationController
-  def cart
+  def shoppingcart
     user_items = Cart.where(user_id: params[:id])
+    puts user_items
     render json: user_items
+  end
+
+  def index
+    allCart = Cart.all
+    render json: allCartc
   end
 
   def create
@@ -13,6 +19,12 @@ class CartsController < ApplicationController
     sneaker = Cart.find(params[:id])
     sneaker.destroy
     render json: sneaker
+  end
+
+  def clearCart
+    user_items = Cart.where(user_id: params[:id])
+    user_items.destroy_all
+    render json: user_items
   end
 
   private

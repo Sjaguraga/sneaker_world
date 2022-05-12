@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
-  resources :carts, only: %i[index create destroy]
+  resources :carts
   resources :sneakers, only: %i[index show]
-  get "/carts/:id", to: "carts#cart"
+  get "/shoppingcarts/:id", to: "carts#shoppingcart"
+  delete "/clearCart/:id", to: "carts#clearCart"
   post "/signup", to: "users#create"
   get "/me", to: "users#show"
   post "/login", to: "sessions#create"

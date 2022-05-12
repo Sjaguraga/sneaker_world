@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -8,9 +8,11 @@ import IconButton from "@mui/material/IconButton";
 import Badge from "@mui/material/Badge";
 import ShoppingBagSharpIcon from "@mui/icons-material/ShoppingBagSharp";
 import PersonSharpIcon from "@mui/icons-material/PersonSharp";
+import Cart from "../CartComponents/Cart";
 import "./NavBar.css";
 
 function NavBar({ setUser, cartLength }) {
+  const navigate = useNavigate();
   function handleLogoutClick() {
     fetch("/logout", { method: "DELETE" }).then((r) => {
       if (r.ok) {
@@ -60,14 +62,14 @@ function NavBar({ setUser, cartLength }) {
           </Typography>
           <Typography>
             <IconButton
-              className="blink-1"
               size="small"
               edge="start"
               color="inherit"
               aria-label="menu"
               sx={{ mr: 2 }}
-              as={Link}
-              to="/checkout"
+              onClick={() => {
+                navigate("cart");
+              }}
             >
               <Badge color="primary" badgeContent={cartLength}>
                 <ShoppingBagSharpIcon />

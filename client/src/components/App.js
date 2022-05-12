@@ -11,110 +11,117 @@ import Home from "../pages/Home";
 import Sneakers from "../pages/Sneakers";
 import Checkout from "./checkout/Checkout";
 import SneakerDetails from "../pages/SneakerDetails";
+
 function App() {
   const [user, setUser] = useState(null);
-  const [cartLength, setCartLength] = useState("");
+  const [cart, setCart] = useState([]);
+  const [cartLength, setCartLength] = useState(0);
+  const [checkoutSum, setCheckoutSum] = useState("");
 
-  // useEffect(() => {
-  //   fetch("/me").then((r) => {
-  //     if (r.ok) {
-  //       r.json().then((user) => setUser(user));
-  //     }
-  //   });
-  // }, []);
   useEffect(() => {
     fetch("/me").then((r) => {
       if (r.ok) {
         r.json().then((user) => {
           setUser(user);
-          fetchCartLength(user);
+          getCart(user);
         });
       }
     });
   }, []);
 
-  const fetchCartLength = (user) => {
-    fetch(`/carts/${user.id}`)
-      .then((r) => r.json())
+  function getCart(user) {
+    fetch(`/shoppingcarts/${user.id}`)
+      .then((response) => response.json())
       .then((data) => {
-        console.log(data.length);
-        setCartLength(data.length);
+        console.log(data);
+        setCart(data);
       });
-  };
+  }
+  useEffect(() => {
+    setCartLength(cart.length);
+  }, [cart]);
 
-  //add to cart function
-  const handleAddCart = (sneaker_id) => {
-    console.log(user.id);
-    let newObj = {
-      user_id: user.id,
-      sneaker_id: sneaker_id,
-    };
+  console.log(cartLength);
+  function handleAddCart(sneaker_id) {
+    let newSneakerObj = { sneaker_id: sneaker_id, user_id: user.id };
 
-    fetch("/carts", {
+    fetch("/carts/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(newObj),
+      body: JSON.stringify(newSneakerObj),
     }).then((r) => {
       if (r.ok) {
         r.json().then((obj) => {
-          console.log(obj);
-
-          alert("sneaker added to cart!", {
-            position: "top-center",
-            autoClose: 500,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-          });
-          fetchCartLength(user);
+          console.log("Success:", obj);
+          setCart([...cart, obj]);
         });
       } else {
         r.json().then((err) => {
-          console.log(err);
-          alert("limited to one sneaker per user!", {
-            position: "top-center",
-            autoClose: 500,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-          });
+          alert(err.errors);
         });
       }
     });
-  };
+  }
 
-  if (!user)
-    return <Login onLogin={setUser} fetchCartLength={fetchCartLength} />;
+  console.log(cart);
+  function deleteItem(cart_id) {
+    fetch(`/carts/${cart_id}`, {
+      method: "DELETE",
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        setCart(cart.filter((item) => item.id !== data.id));
+      });
+  }
+
+  function checkoutHandler(cartTotal) {
+    setCheckoutSum(cartTotal);
+  }
+
+  if (!user) return <Login onLogin={setUser} getCart={getCart} />;
 
   return (
-    <>
+    <div>
       <NavBar user={user} setUser={setUser} cartLength={cartLength} />
       <main>
         <Routes>
+          <Route path="/" element={<Home user={user} />} />
           <Route
             path="/sneakers"
             element={<Sneakers user={user} handleAddCart={handleAddCart} />}
           />
-          <Route path="/" element={<Home user={user} />} />
+          <Route path="/sneakers/:sneaker_id" element={<SneakerDetails />} />
           <Route
-            path="/sneakers/:sneaker_id"
-            element={<SneakerDetails handleAddCart={handleAddCart} />}
+            path="/cart"
+            element={
+              <Cart
+                checkoutHandler={checkoutHandler}
+                user={user}
+                setCartLength={setCartLength}
+                cart={cart}
+                deleteItem={deleteItem}
+              />
+            }
           />
+
           <Route
-            path="cart"
-            element={<Cart user={user} setCartLength={setCartLength} />}
+            path="checkout"
+            element={
+              <Checkout
+                user={user}
+                checkoutSum={checkoutSum}
+                cart={cart}
+                setCartLength={setCartLength}
+                setCart={setCart}
+              />
+            }
           />
-          <Route path="/checkout" element={<Checkout />} />
           <Route path="*" element={<Error />} />
         </Routes>
       </main>
-    </>
+    </div>
   );
 }
 
