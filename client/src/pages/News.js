@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
-
-function News() {
+const News = () => {
   useEffect(() => {
     const anchor = document.createElement("a");
     anchor.setAttribute("class", "twitter-timeline");
@@ -22,6 +21,6 @@ function News() {
       <div className="twitter-embed"></div>
     </section>
   );
-}
+};
 
 export default News;

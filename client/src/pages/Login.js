@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import LoginForm from "../components/LoginForm";
 import SignUpForm from "../components/SignUpForm";
 
-function Login({ onLogin, getCart }) {
+const Login = ({ onLogin, getCart }) => {
   const [showLogin, setShowLogin] = useState(true);
   return (
-    <div className="login">
+    <>
       {showLogin ? (
         <>
           <LoginForm
@@ -24,8 +24,8 @@ function Login({ onLogin, getCart }) {
           />
         </>
       )}
-    </div>
+    </>
   );
-}
+};
 
 export default Login;

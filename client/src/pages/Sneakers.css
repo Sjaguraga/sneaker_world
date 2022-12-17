@@ -5,21 +5,24 @@
   transition: all 0.4s ease;
 }
 
-.sneaker-container {
-  background-color: black;
-  background-image: url("https://www.transparenttextures.com/patterns/stardust.png");
-  animation: stars 30s linear infinite;
+.sneaker-detail {
+  height: 600px;
+  width: 600px;
 }
 
-@keyframes stars {
+/* @keyframes stars {
   0% {
     background-position: 0 0;
   }
   100% {
-    /* the size of the background image */
+    
     background-position: 798px -798px;
   }
-}
+} */
+
+/* * {
+  font-family: "Euclid Circular A";
+} */
 
 .sneaker-title {
   display: flex;
@@ -27,23 +30,23 @@
 }
 
 .sneaker-price {
-  font-family: "SF Arch Rival";
+  /* font-family: "SF Arch Rival"; */
   font-size: 15px;
   font-weight: bold;
 }
 
 .name-font {
-  font-family: "Qhairo";
+  /* font-family: "Qhairo"; */
   font-weight: bold;
 }
 
 .description-font {
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  /* font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif; */
   font-size: 14px;
   font-weight: bold;
 }
 
-.glass {
+/* .glass {
   color: #fbfff7;
   background-image: linear-gradient(135deg, #54545457, #17171712);
   border-radius: 20px;
@@ -55,4 +58,4 @@
   margin-top: 50px;
   margin-left: 100px;
   z-index: 10;
-}
+} */

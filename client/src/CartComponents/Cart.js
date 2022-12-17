@@ -14,13 +14,7 @@ import IconButton from "@mui/material/IconButton";
 import Button from "@mui/material/Button";
 const theme = createTheme();
 
-export default function Cart({
-  user,
-  cart,
-  setCartLength,
-  deleteItem,
-  checkoutHandler,
-}) {
+const Cart = ({ user, cart, setCartLength, deleteItem, checkoutHandler }) => {
   const [cartTotal, setCartTotal] = React.useState(0);
   const navigate = useNavigate();
 
@@ -57,31 +51,33 @@ export default function Cart({
   };
 
   return (
-    <div className="checkout-container">
-      <div className="glass-checkout">
-        <ThemeProvider theme={theme}>
-          <Container component="main" maxWidth="sm" sx={{ mb: 4 }}>
-            <Typography>C A R T </Typography>
-            <Paper
-              variant="outlined"
-              sx={{ my: { xs: 3, md: 3 }, p: { xs: 2, md: 3 } }}
-            >
-              <List>{cartList}</List>
-              <Typography>Total: ${cartTotal}.00</Typography>
-              <Button
-                sx={{ mt: 1 }}
-                variant="contained"
-                onClick={() => {
-                  checkoutHandler(cartTotal);
-                  navigate("/checkout");
-                }}
-              >
-                Checkout!
-              </Button>
-            </Paper>
-          </Container>
-        </ThemeProvider>
-      </div>
-    </div>
+    // <div className="checkout-container">
+    //   <div className="glass-checkout">
+    <ThemeProvider theme={theme}>
+      <Container component="main" maxWidth="sm" sx={{ mb: 4 }}>
+        <Typography>C A R T </Typography>
+        <Paper
+          variant="outlined"
+          sx={{ my: { xs: 3, md: 3 }, p: { xs: 2, md: 3 } }}
+        >
+          <List>{cartList}</List>
+          <Typography>Total: ${cartTotal}.00</Typography>
+          <Button
+            sx={{ mt: 1 }}
+            variant="contained"
+            onClick={() => {
+              checkoutHandler(cartTotal);
+              navigate("/checkout");
+            }}
+          >
+            Checkout!
+          </Button>
+        </Paper>
+      </Container>
+    </ThemeProvider>
+    //   </div>
+    // </div>
   );
-}
+};
+
+export default Cart;

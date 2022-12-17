@@ -10,20 +10,9 @@ import Container from "@mui/material/Container";
 import Link from "@mui/material/Link";
 import Box from "@mui/material/Box";
 
-function Copyright() {
-  return (
-    <Typography variant="body2" color="background.paper" align="center">
-      {"Copyright © "}
-      <Link color="inherit" href="https://mui.com/">
-        S N E A K E R W O R L D
-      </Link>{" "}
-      {new Date().getFullYear()}
-      {"."}
-    </Typography>
-  );
-}
+import "./Sneakers.css";
 
-function SneakerDetails() {
+const SneakerDetails = () => {
   const { sneaker_id } = useParams();
   const [sneaker, setSneaker] = useState("");
   useEffect(() => {
@@ -36,7 +25,7 @@ function SneakerDetails() {
   }, []);
 
   return (
-    <div className="sneaker-container">
+    <div className="sneaker-detail">
       <CssBaseline />
       <main>
         <div className="glass">
@@ -55,7 +44,7 @@ function SneakerDetails() {
                   <Grid container>
                     <Grid xs={6} item>
                       <Typography sx={{ mr: 40 }}>
-                        <div className="sneaker-price">{sneaker.brand}</div>
+                        {/* <div className="sneaker-price">{sneaker.brand}</div> */}
                       </Typography>
                     </Grid>
                     <Grid xs={6} item container>
@@ -91,7 +80,7 @@ function SneakerDetails() {
         </div>
       </main>
       {/* Footer */}
-      <Box sx={{ bgcolor: "#1b1b1b", p: 2 }} component="footer">
+      {/* <Box sx={{ bgcolor: "#1b1b1b", p: 2 }} component="footer">
         <Typography variant="h6" align="center" gutterBottom></Typography>
         <Typography
           variant="subtitle1"
@@ -100,10 +89,10 @@ function SneakerDetails() {
           component="p"
         ></Typography>
         <Copyright />
-      </Box>
+      </Box> */}
       {/* End footer */}
     </div>
   );
-}
+};
 
 export default SneakerDetails;

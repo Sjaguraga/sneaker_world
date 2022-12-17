@@ -1,4 +1,4 @@
-.glass-checkout {
+/* .glass-checkout {
   color: #fbfff7;
   background-image: linear-gradient(135deg, #54545457, #17171712);
   border-radius: 20px;
@@ -10,20 +10,20 @@
   margin-top: 50px;
   margin-left: 100px;
   z-index: 10;
-}
-
+} */
+/* 
 .checkout-container {
   background-color: black;
   background-image: url("https://www.transparenttextures.com/patterns/stardust.png");
   animation: stars 30s linear infinite;
-}
+} 
 
-@keyframes stars {
+/* @keyframes stars {
   0% {
     background-position: 0 0;
   }
   100% {
-    /* the size of the background image */
+    
     background-position: 798px -798px;
   }
-}
+} */

@@ -1,18 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "./App.css";
+// import "bootstrap/dist/css/bootstrap.min.css";
 import Login from "../pages/Login";
 import NavBar from "./NavBar";
-import Error from "../pages/Error";
-import "./App.css";
 import Cart from "../CartComponents/Cart";
 import Home from "../pages/Home";
 import Sneakers from "../pages/Sneakers";
 import Checkout from "./checkout/Checkout";
 import SneakerDetails from "../pages/SneakerDetails";
 
-function App() {
+const App = () => {
   const [user, setUser] = useState(null);
   const [cart, setCart] = useState([]);
   const [cartLength, setCartLength] = useState(0);
@@ -28,21 +25,20 @@ function App() {
       }
     });
   }, []);
-
-  function getCart(user) {
+  const getCart = (user) => {
     fetch(`/shoppingcarts/${user.id}`)
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
         setCart(data);
       });
-  }
+  };
   useEffect(() => {
     setCartLength(cart.length);
   }, [cart]);
 
   console.log(cartLength);
-  function handleAddCart(sneaker_id) {
+  const handleAddCart = (sneaker_id) => {
     let newSneakerObj = { sneaker_id: sneaker_id, user_id: user.id };
 
     fetch("/carts/", {
@@ -63,10 +59,10 @@ function App() {
         });
       }
     });
-  }
+  };
 
   console.log(cart);
-  function deleteItem(cart_id) {
+  const deleteItem = (cart_id) => {
     fetch(`/carts/${cart_id}`, {
       method: "DELETE",
     })
@@ -74,11 +70,10 @@ function App() {
       .then((data) => {
         setCart(cart.filter((item) => item.id !== data.id));
       });
-  }
-
-  function checkoutHandler(cartTotal) {
+  };
+  const checkoutHandler = (cartTotal) => {
     setCheckoutSum(cartTotal);
-  }
+  };
 
   if (!user) return <Login onLogin={setUser} getCart={getCart} />;
 
@@ -118,11 +113,10 @@ function App() {
               />
             }
           />
-          <Route path="*" element={<Error />} />
         </Routes>
       </main>
     </div>
   );
-}
+};
 
 export default App;
