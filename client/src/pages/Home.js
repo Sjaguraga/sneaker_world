@@ -1,35 +1,33 @@
-import React from "react";
+import { useState, useEffect } from "react";
 import News from "../pages/News";
 import "./Home.css";
 
-// function Home() {
-//   return (
-//     <div className="home-container">
-//       <div className="home-glass">
-//         <h1
-//           style={{
-//             color: "white",
-//             fontFamily: "Shablagoo ",
-//             textShadow: "2px 2px steelblue",
-//           }}
-//         >
-//           {" "}
-//           WELCOME TO SNEAKERWORLD
-//         </h1>
-//         <News />
-//       </div>
-//     </div>
-//   );
-// }
-
-// export default Home;
+import CircularProgress from "@mui/material/CircularProgress";
+import Box from "@mui/material/Box";
 
 const Home = (props) => {
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+    }, 1500);
+  }, []);
+
   return (
-    <div className="home">
-      <h1 className="title">Welcome {props.user.username}</h1>
-      <News />
-    </div>
+    <>
+      {loading ? (
+        <Box sx={{ display: "flex" }}>
+          <CircularProgress />
+        </Box>
+      ) : (
+        <div className="home">
+          <h1 className="title">Welcome {props.user.username}</h1>
+          <News />
+        </div>
+      )}
+    </>
   );
 };
 

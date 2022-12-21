@@ -10,19 +10,18 @@
   width: 600px;
 }
 
-/* @keyframes stars {
+.sneakers {
+  height: 740px;
+}
+
+@keyframes stars {
   0% {
     background-position: 0 0;
   }
   100% {
-    
     background-position: 798px -798px;
   }
-} */
-
-/* * {
-  font-family: "Euclid Circular A";
-} */
+}
 
 .sneaker-title {
   display: flex;
@@ -30,32 +29,15 @@
 }
 
 .sneaker-price {
-  /* font-family: "SF Arch Rival"; */
   font-size: 15px;
   font-weight: bold;
 }
 
 .name-font {
-  /* font-family: "Qhairo"; */
   font-weight: bold;
 }
 
 .description-font {
-  /* font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif; */
   font-size: 14px;
   font-weight: bold;
 }
-
-/* .glass {
-  color: #fbfff7;
-  background-image: linear-gradient(135deg, #54545457, #17171712);
-  border-radius: 20px;
-  width: 85%;
-  height: 85%;
-  padding: 15px;
-  text-align: center;
-  display: inline-block;
-  margin-top: 50px;
-  margin-left: 100px;
-  z-index: 10;
-} */

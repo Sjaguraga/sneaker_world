@@ -79,18 +79,6 @@ const SneakerDetails = () => {
           </Container>
         </div>
       </main>
-      {/* Footer */}
-      {/* <Box sx={{ bgcolor: "#1b1b1b", p: 2 }} component="footer">
-        <Typography variant="h6" align="center" gutterBottom></Typography>
-        <Typography
-          variant="subtitle1"
-          align="center"
-          color="text.secondary"
-          component="p"
-        ></Typography>
-        <Copyright />
-      </Box> */}
-      {/* End footer */}
     </div>
   );
 };
